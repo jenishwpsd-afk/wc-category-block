@@ -1,30 +1,63 @@
 <?php
 /**
- * Plugin Name:       Wc Category Display
- * Description:       Example block scaffolded with Create Block tool.
- * Version:           0.1.0
- * Requires at least: 6.8
+ * Plugin Name:       WC Category Display
+ * Description:       Display WooCommerce categories in grid or slider layout with customizable options.
+ * Version:           1.0.0
+ * Requires at least: 6.0
  * Requires PHP:      7.4
- * Author:            The WordPress Contributors
+ * Author:            Jenish
  * License:           GPL-2.0-or-later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain:       wc-category-display
- *
- * @package CreateBlock
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
-	exit; // Exit if accessed directly.
+    exit; // Exit if accessed directly
 }
+
 /**
- * Registers the block(s) metadata from the `blocks-manifest.php` and registers the block type(s)
- * based on the registered block metadata. Behind the scenes, it registers also all assets so they can be enqueued
- * through the block editor in the corresponding context.
- *
- * @see https://make.wordpress.org/core/2025/03/13/more-efficient-block-type-registration-in-6-8/
- * @see https://make.wordpress.org/core/2024/10/17/new-block-type-registration-apis-to-improve-performance-in-wordpress-6-7/
+ * Register the block
  */
-function create_block_wc_category_display_block_init() {
-	wp_register_block_types_from_metadata_collection( __DIR__ . '/build', __DIR__ . '/build/blocks-manifest.php' );
+function wc_category_display_register_block() {
+    register_block_type( __DIR__ . '/build' );
 }
-add_action( 'init', 'create_block_wc_category_display_block_init' );
+add_action( 'init', 'wc_category_display_register_block' );
+
+/**
+ * Enqueue frontend styles and scripts
+ */
+function wc_category_display_enqueue_assets() {
+    // Enqueue Swiper CSS and JS for slider layout
+    wp_enqueue_style( 
+        'swiper-css', 
+        'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css',
+        array(),
+        '11.0.0'
+    );
+    
+    wp_enqueue_script( 
+        'swiper-js', 
+        'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js',
+        array(),
+        '11.0.0',
+        true
+    );
+
+    // Enqueue custom frontend script
+    wp_enqueue_script(
+        'wc-category-display-frontend',
+        plugins_url( 'assets/frontend.js', __FILE__ ),
+        array( 'swiper-js' ),
+        '1.0.0',
+        true
+    );
+
+    // Enqueue custom styles
+    wp_enqueue_style(
+        'wc-category-display-style',
+        plugins_url( 'assets/style.css', __FILE__ ),
+        array(),
+        '1.0.0'
+    );
+}
+add_action( 'wp_enqueue_scripts', 'wc_category_display_enqueue_assets' );
