@@ -20,9 +20,6 @@
 ### WooCommerce Category Slider Layout
 ![WooCommerce Category Slider](https://github.com/user-attachments/assets/14ff08eb-9d21-471d-893c-9186e9acc449)
 
-### Block Editor Settings Panel
-![Block Editor](https://github.com/user-attachments/assets/14ff08eb-9d21-471d-893c-9186e9acc449)
-
 ---
 
 ## ⭐ Why Choose WooCommerce Category Block?
