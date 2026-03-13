@@ -164,42 +164,6 @@ Click "Update" or "Publish" and view your page!
 
 ---
 
-## 📖 Usage Examples
-
-### Example 1: Homepage Category Showcase (Grid)
-```
-Layout: Grid
-Columns: 3
-Show All: No
-Limit: 6
-Order By: Count (most popular)
-Show Count: Yes
-```
-**Perfect for:** Displaying top 6 categories on your homepage
-
-### Example 2: Shop Page Categories (Slider)
-```
-Layout: Slider
-Columns: 4
-Show All: Yes
-Order By: Name
-Show Count: No
-```
-**Perfect for:** Browse all categories in a carousel
-
-### Example 3: Sidebar Widget (Vertical Grid)
-```
-Layout: Grid
-Columns: 1
-Show All: No
-Limit: 8
-Order By: Name
-Show Count: Yes
-```
-**Perfect for:** Sidebar category navigation
-
----
-
 ## 🎨 Customization
 
 ### CSS Customization
